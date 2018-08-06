@@ -30,7 +30,7 @@ public class UsersServiceImpl implements UsersService {
      * @return
      */
     @Override
-    public Users findAll(Integer id) {
+    public Users ByPrimaryKey(Integer id) {
         return usersDao.selectByPrimaryKey(id);
     }
 

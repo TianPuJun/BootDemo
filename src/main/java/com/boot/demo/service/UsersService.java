@@ -18,7 +18,7 @@ public interface UsersService {
      * @param id
      * @return
      */
-    Users findAll(Integer id);
+    Users ByPrimaryKey(Integer id);
 
     /**
      * 根据用户名查询个人信息

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-
 /**
  * 用户控制
  *
@@ -90,6 +89,7 @@ public class UsersController {
      * @param userName
      * @return
      */
+    @GetMapping("/findByUserName")
     public ResponseBean findByUserName(String userName){
         ResponseBean responseBean = new ResponseBean();
         Users byUserName = usersService.findByUserName(userName);
@@ -103,13 +103,14 @@ public class UsersController {
         return responseBean;
     }
     /**
-     * 查询所有的
+     * 根据主键id
+     * 查询
      * @return
      */
-    @GetMapping("/findAll")
-    public ResponseBean findAll(){
+    @GetMapping("/findByPrimaryKey")
+    public ResponseBean ByPrimaryKey(int id){
         ResponseBean responseBean = new ResponseBean();
-        Users all = usersService.findAll(2);
+        Users all = usersService.ByPrimaryKey(id);
         responseBean.setFlag(true);
         responseBean.setMsg("查询成功");
         responseBean.setRes(all);
@@ -136,9 +137,4 @@ public class UsersController {
         responseBean.setTotal(allUser.getSize());
         return responseBean;
     }
-
-
-
-
-
 }
