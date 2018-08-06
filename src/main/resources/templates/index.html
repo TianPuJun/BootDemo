@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>登录页面</title>
-</head>
+<html  xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="commons/head::head('首页',
+'/static/assets/vendors/custom/datatables/datatables.bundle.css,'+
+'/templates/index.css'
+)"></head>
 <body>
-这是登录页面的测试
+
+<p>Map<span th:text="'姓名'+${userName}"></span>!<br />测试数据结束</p>
+<p>ModealAndView:<span th:text="'测试传值：'+${testValue}"></span></p>
 </body>
 </html>

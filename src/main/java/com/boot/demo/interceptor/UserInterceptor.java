@@ -43,7 +43,7 @@ public class UserInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-    logger.info("this is afterConpletion");
+        logger.info("this is afterConpletion");
     }
 
 

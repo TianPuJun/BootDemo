@@ -17,7 +17,7 @@ import java.security.NoSuchAlgorithmException;
  * @create 2018-07-24 15:04
  **/
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/rest/users")
 public class UsersController {
     @Autowired
     private UsersService usersService;
