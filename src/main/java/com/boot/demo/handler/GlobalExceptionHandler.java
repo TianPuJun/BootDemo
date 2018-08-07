@@ -2,12 +2,10 @@ package com.boot.demo.handler;
 
 
 import com.boot.demo.util.ResponseBean;
-import com.boot.demo.util.ResponseData;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.reactive.error.DefaultErrorAttributes;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import javax.servlet.http.HttpServletRequest;

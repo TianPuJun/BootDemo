@@ -6,8 +6,6 @@ package com.boot.demo.dao;
  */
 
 import com.boot.demo.bean.Users;
-import org.apache.ibatis.annotations.Param;
-import org.mapstruct.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
