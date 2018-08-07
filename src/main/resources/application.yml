@@ -4,6 +4,14 @@ server:
 mybatis:
   mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
   type-aliases-package: com.boot.demo.bean  # 注意：对应实体类的路径
+##配置swagger(此处配置以及swagger文件是json形式)
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /rest/doc
+swagger:
+  enable: true
 
 #pagehelper
 pagehelper:

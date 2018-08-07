@@ -17,7 +17,7 @@ import java.security.NoSuchAlgorithmException;
  * @create 2018-07-24 15:04
  **/
 @RestController
-@RequestMapping("/rest/users")
+@RequestMapping("/rest/users.do")
 public class UsersController {
     @Autowired
     private UsersService usersService;
@@ -29,8 +29,8 @@ public class UsersController {
      * @param passWord
      * @return
      */
-    @GetMapping("/login")
-    public ResponseBean login(String userName,String passWord){
+    @PostMapping("/login")
+    public ResponseBean login(String userName, String passWord){
         ResponseBean res = new ResponseBean();
         boolean b = loginValid(userName, passWord);
         if (b==true){

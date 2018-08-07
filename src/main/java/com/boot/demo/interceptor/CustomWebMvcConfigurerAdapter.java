@@ -21,7 +21,9 @@ public class CustomWebMvcConfigurerAdapter implements WebMvcConfigurer {
          *此处拦截路径（/**）
          * 注意两个**。一个*号只拦截一级路径下，两个*号拦截所有
          */
-        registry.addInterceptor(new UserInterceptor()).addPathPatterns("/**");
+        registry.addInterceptor(new UserInterceptor()).addPathPatterns("/**")
+                .excludePathPatterns("/rest/login.do/info")
+                .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
     }
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -30,5 +32,10 @@ public class CustomWebMvcConfigurerAdapter implements WebMvcConfigurer {
         registry.addResourceHandler("/templates/**.css").addResourceLocations("classpath:/templates/");
         //其他静态资源
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+        //swagger增加url映射
+        registry.addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 }

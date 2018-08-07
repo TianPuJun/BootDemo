@@ -29,8 +29,11 @@ public class UserInterceptor implements HandlerInterceptor {
         System.out.println(request.getParameterMap());
         logger.info(String.format("请求参数,url：%s,method:%s,params:%s",url,method,uri,queryString));
         // TODO: 2018/7/31 可添加登录拦截验证
-      /*  if (method.equals("GET")){
-            return true;
+      /*String passUri[] = {"/rest","/static"};
+        for (String u:passUri) {
+            if (uri.startsWith(u)) {
+                return true;
+            }
         }*/
         return true;
     }
