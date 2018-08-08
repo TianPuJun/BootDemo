@@ -3,9 +3,6 @@ package com.boot.demo.service;
 import com.boot.demo.bean.Users;
 import com.github.pagehelper.PageInfo;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-
 /**
  * 用户服务
  *

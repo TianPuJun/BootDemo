@@ -1,9 +1,4 @@
 package com.boot.demo.dao;
-/**
- * dao接口命名规则
- * read: get,select,count,list,query,find
- * write: add,create,update,delete,remove,insert
- */
 
 import com.boot.demo.bean.Users;
 import org.springframework.stereotype.Repository;

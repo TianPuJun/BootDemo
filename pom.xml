@@ -106,10 +106,12 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <!--redis-->
-        <dependency>
+        <!--redis与generator插件有冲突，原因可能是下面注释代码报错，与下方冲突-->
+        <!--可以看出两个包并没有区别，但是当springBoot的版本为1.4.7 以上的时候，spring-boot-starter-redis 就空了。要想引入redis就只能选择有data的。-->
+  <!--      <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-redis</artifactId>
-        </dependency>
+        </dependency>-->
         <!-- 整合redis -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

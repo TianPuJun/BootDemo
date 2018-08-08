@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -79,6 +80,7 @@ public class UsersServiceImpl implements UsersService {
         Users users  = new Users();
         users.setUsername(userName);
         users.setPassword(encryptedPwd);
+        users.setCreatTime(new Date());
         int insert = usersDao.insert(users);
         return insert;
     }

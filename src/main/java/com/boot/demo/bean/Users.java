@@ -1,14 +1,22 @@
 package com.boot.demo.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class Users {
-    //id
     private Integer id;
-    //登录名
+    //用户名
     private String username;
     //密码
     private String password;
-    //真实姓名
+    //姓名
     private String name;
+    //创建时间，时间格式化
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date creatTime;
 
     public Integer getId() {
         return id;
@@ -40,5 +48,13 @@ public class Users {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public Date getCreatTime() {
+        return creatTime;
+    }
+
+    public void setCreatTime(Date creatTime) {
+        this.creatTime = creatTime;
     }
 }
