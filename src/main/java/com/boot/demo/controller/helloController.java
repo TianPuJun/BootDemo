@@ -1,11 +1,13 @@
 package com.boot.demo.controller;
 
+import com.boot.demo.util.RedisUtil;
 import io.swagger.annotations.Api;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.sql.ResultSet;
 import java.util.Map;
 
 /**
@@ -39,6 +41,7 @@ public class helloController {
     }
     @GetMapping("/ex")
     public String a() throws Exception {
+
         throw new Exception("test");
     }
 }
