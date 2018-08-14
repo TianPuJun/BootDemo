@@ -139,6 +139,16 @@
             <artifactId>protostuff-runtime</artifactId>
             <version>1.0.8</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.4.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.5</version>
+        </dependency>
         <!--不懂下面代码在哪用到暂时不删除了-->
        <!-- <dependency>
             <groupId>com.agapsys.archetypes</groupId>
