@@ -149,13 +149,6 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.5</version>
         </dependency>
-        <!--不懂下面代码在哪用到暂时不删除了-->
-       <!-- <dependency>
-            <groupId>com.agapsys.archetypes</groupId>
-            <artifactId>agreste-app-archetype</artifactId>
-            <version>6.0.0</version>
-        </dependency>-->
-        <!--········-->
     </dependencies>
     <build>
         <plugins>

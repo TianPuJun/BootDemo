@@ -21,7 +21,8 @@ public class HttpTest {
     @Test
         public void a(){
             Map map = new HashMap();
-            map.put("tn","90278658_hao_pg");
-            HttpClientHelper.sendGet("https://www.baidu.com",map,"utf-8");
+            map.put("userName","cui");
+            map.put("passWord","123456");
+            HttpClientHelper.sendPost("http://localhost:8099/rest/users.do/login",map,"utf-8");
         }
 }

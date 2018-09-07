@@ -17,8 +17,9 @@ public class URLConnectionTest {
             HttpRequest httpRequest = new HttpRequest();
             httpRequest.setDefaultContentEncoding("UTF-8");
             Map map = new HashMap();
-            map.put("tn","90278658_hao_pg");
-            HttpRespons hr = httpRequest.sendGet("http://www.baidu.com",map);
+            map.put("userName","cui");
+            map.put("passWord","123456");
+            HttpRespons hr = httpRequest.sendPost("http://localhost:8099/rest/users.do/login",map);
             System.out.println(hr.getUrlString());
             System.out.println(hr.getProtocol());
             System.out.println(hr.getHost());
