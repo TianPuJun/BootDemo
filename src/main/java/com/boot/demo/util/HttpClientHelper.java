@@ -20,7 +20,8 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 
 
@@ -370,7 +371,7 @@ public class HttpClientHelper {
      */
     public static String httpClientPost(String urlParam, Map<String, Object> params, String charset) {
         StringBuffer resultBuffer = null;
-        HttpClient client = new DefaultHttpClient();
+        CloseableHttpClient client = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost(urlParam);
         // 构建请求参数
         List<NameValuePair> list = new ArrayList<NameValuePair>();
@@ -416,7 +417,7 @@ public class HttpClientHelper {
      */
     public static String httpClientGet(String urlParam, Map<String, Object> params, String charset) {
         StringBuffer resultBuffer = null;
-        HttpClient client = new DefaultHttpClient();
+        CloseableHttpClient client = HttpClients.createDefault();
         BufferedReader br = null;
         // 构建请求参数
         StringBuffer sbParams = new StringBuffer();

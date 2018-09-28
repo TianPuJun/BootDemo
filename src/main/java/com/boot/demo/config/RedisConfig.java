@@ -7,11 +7,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.RedisPassword;
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
+import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import redis.clients.jedis.JedisPoolConfig;
+
+import java.time.Duration;
 
 /**
  * redis配置文件单机版redis
@@ -86,25 +91,41 @@ public class RedisConfig extends CachingConfigurerSupport {
      * @param @param jedisPoolConfig
      * @param @return
      * @return JedisConnectionFactory
-     * @autor lpl
-     * @date 2018年2月24日
+     * @autor cxt
+     * @date 2018年9月28日
      * @throws
      */
     @Bean
-    public JedisConnectionFactory JedisConnectionFactory(JedisPoolConfig jedisPoolConfig){
-        JedisConnectionFactory JedisConnectionFactory = new JedisConnectionFactory(jedisPoolConfig);
-        //连接池
-        JedisConnectionFactory.setPoolConfig(jedisPoolConfig);
-        //IP地址
-        JedisConnectionFactory.setHostName("192.168.1.171");
-        //端口号
-        JedisConnectionFactory.setPort(6379);
-        //如果Redis设置有密码
-        JedisConnectionFactory.setPassword("test123");
-        //客户端超时时间单位是毫秒
-        JedisConnectionFactory.setTimeout(5000);
-        return JedisConnectionFactory;
+    JedisConnectionFactory jedisConnectionFactory() {
+        RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration ();
+        redisStandaloneConfiguration.setHostName("192.168.1.171");
+        redisStandaloneConfiguration.setPort(6379);
+        redisStandaloneConfiguration.setDatabase(0);
+        redisStandaloneConfiguration.setPassword(RedisPassword.of("test123"));
+        JedisClientConfiguration.JedisClientConfigurationBuilder jedisClientConfiguration = JedisClientConfiguration.builder();
+        //  connection timeout
+        jedisClientConfiguration.connectTimeout(Duration.ofMillis(5000));
+
+        JedisConnectionFactory factory = new JedisConnectionFactory(redisStandaloneConfiguration,
+                jedisClientConfiguration.build());
+        return factory;
     }
+//    @Bean
+//    public JedisConnectionFactory JedisConnectionFactory(JedisPoolConfig jedisPoolConfig){
+//        JedisConnectionFactory JedisConnectionFactory = new JedisConnectionFactory(jedisPoolConfig);
+//        //连接池
+//        JedisConnectionFactory.setPoolConfig(jedisPoolConfig);
+//        //IP地址
+//        JedisConnectionFactory.setHostName("192.168.1.171");
+//        //端口号
+//        JedisConnectionFactory.setPort(6379);
+//        //如果Redis设置有密码
+//        JedisConnectionFactory.setPassword("test123");
+//        //客户端超时时间单位是毫秒
+//        JedisConnectionFactory.setTimeout(5000);
+//        return JedisConnectionFactory;
+//    }
+
 
     /**
      * 实例化 RedisTemplate 对象
