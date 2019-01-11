@@ -517,7 +517,7 @@ public class HttpClientHelper {
                     contentLength = Integer.parseInt(line.split(":")[1].trim());
                 }
                 // 如果遇到了一个单独的回车换行，则表示请求头结束
-            } while (!line.equals("\r\n"));
+            } while (!"\r\n".equals(line));
             // 读取出响应体数据（就是你要的数据）
             result = readLine(is, contentLength, charset);
         } catch (Exception e) {
@@ -617,7 +617,7 @@ public class HttpClientHelper {
                     contentLength = Integer.parseInt(line.split(":")[1].trim());
                 }
                 // 如果遇到了一个单独的回车换行，则表示请求头结束
-            } while (!line.equals("\r\n"));
+            } while (!"\r\n".equals(line));
             // 读取出响应体数据（就是你要的数据）
             result = readLine(is, contentLength, charset);
         } catch (Exception e) {

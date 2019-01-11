@@ -21,7 +21,7 @@ public class HttpClient {
         PrintWriter os = new PrintWriter(socket.getOutputStream());
         BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         readline = sin.readLine();
-        while(!readline.equals("close")){
+        while(!"close".equals(readline)){
             os.println(readline);
             os.flush();
             System.out.println("Client:1"+readline);

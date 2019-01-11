@@ -111,16 +111,18 @@ public class HttpRequest {
             throws IOException {
         HttpURLConnection urlConnection = null;
 
-        if (method.equalsIgnoreCase("GET") && parameters != null) {
+        if ("GET".equalsIgnoreCase(method) && parameters != null) {
             StringBuffer param = new StringBuffer();
             int i = 0;
             for (String key : parameters.keySet()) {
-                if (i == 0)
+                if (i == 0) {
                     param.append("?");
-                else
+                }
+                else {
                     param.append("&");
-                param.append(key).append("=").append(parameters.get(key));
-                i++;
+                    param.append(key).append("=").append(parameters.get(key));
+                    i++;
+                }
             }
             urlString += param;
         }
@@ -132,12 +134,12 @@ public class HttpRequest {
         urlConnection.setDoInput(true);
         urlConnection.setUseCaches(false);
 
-        if (propertys != null)
+        if (propertys != null) {
             for (String key : propertys.keySet()) {
                 urlConnection.addRequestProperty(key, propertys.get(key));
             }
-
-        if (method.equalsIgnoreCase("POST") && parameters != null) {
+        }
+        if ("POST".equalsIgnoreCase(method) && parameters != null) {
             StringBuffer param = new StringBuffer();
             for (String key : parameters.keySet()) {
                 param.append("&");
@@ -176,9 +178,9 @@ public class HttpRequest {
             bufferedReader.close();
 
             String ecod = urlConnection.getContentEncoding();
-            if (ecod == null)
+            if (ecod == null) {
                 ecod = this.defaultContentEncoding;
-
+            }
             httpResponser.urlString = urlString;
 
             httpResponser.defaultPort = urlConnection.getURL().getDefaultPort();
@@ -204,8 +206,9 @@ public class HttpRequest {
         } catch (IOException e) {
             throw e;
         } finally {
-            if (urlConnection != null)
+            if (urlConnection != null) {
                 urlConnection.disconnect();
+            }
         }
     }
 
